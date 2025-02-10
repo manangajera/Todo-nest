@@ -11,9 +11,7 @@ config(); // Call config() instead of dotenv.config()
 console.log('MongoDB URI:', process.env.MONGO_URL);
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://pokemonfj12:BnY1E7H7yFUUThd9@cluster0.locgq.mongodb.net/todo?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot(process.env.MONGO_URL ),
     UserModule,
     AuthModule,
     TodosModule,
