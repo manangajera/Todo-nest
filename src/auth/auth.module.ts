@@ -11,7 +11,7 @@ import { AuthController } from './auth.controller';
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET || 'fallback_secret_key',
-      signOptions: { expiresIn: '1h' },
+      signOptions: { expiresIn: '1d' },
     }),
   ],
   providers: [AuthService],

@@ -9,6 +9,6 @@ export class CreateUserDto {
   email: string;
 
   @IsNotEmpty()
-  @Length(8, 100) // Example: Basic length check
+  @Length(6, 15) // Example: Basic length check
   password: string;
 }

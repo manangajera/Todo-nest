@@ -16,6 +16,6 @@ export class TodosModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(Middleware)
-      .forRoutes({ path: 'todos', method: RequestMethod.ALL });
+      .forRoutes({ path: 'todos', method: RequestMethod.ALL },{ path: 'todos/:id', method: RequestMethod.ALL });
 }
 }

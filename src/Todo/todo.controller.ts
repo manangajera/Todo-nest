@@ -10,8 +10,10 @@ import {
   Param,
   Request,
   Query,
+  Put,
 } from '@nestjs/common';
 import { TodosService } from './todo.service';
+// import { AuthGuard } from '@nestjs/passport';
 
 @Controller('todos')
 export class TodosController {
@@ -33,6 +35,26 @@ export class TodosController {
   ) {
     const todos = await this.todosService.findAll(req.user.userId, page, limit);
     return todos;
+  }
+  @Get()
+  async findWithTitle(@Request() req, @Query('title') title: string) {
+    return this.todosService.findewithtitle(title, req.user.userId);
+  }
+
+  // @UseGuards(JwtModule)
+  @Put(':id')
+  async update(
+    @Request() req,
+    @Param('id') id: string,
+    @Body() body: { title?: string; status?: boolean },
+  ) {
+    // console.log('controller User:', req.user);
+    return this.todosService.updateTodo(
+      id,
+      req.user.userId,
+      body.title,
+      body.status,
+    );
   }
 
   @Delete(':id')

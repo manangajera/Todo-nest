@@ -6,7 +6,7 @@ import { User } from './user.schema';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
+  @Post('/signup')
   async createuser(@Body() createuserDto: CreateUserDto): Promise<User> {
     const { name, email, password } = createuserDto;
     return this.userService.createUser(name, email, password);
